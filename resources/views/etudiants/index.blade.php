@@ -1,24 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Student Management System</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('etudiants.index') }}">Students List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('etudiants.create') }}">Add Student</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
 @extends('layouts.app')
-@section('title', 'Students')
-@section('titleHeader', 'Students')
+@section('title', __('lang.text_title'))
+@section('titleHeader', __('lang.text_title'))
 @section('content')
 
 <style>
@@ -61,9 +44,10 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
+                <th>@lang('lang.text_name')</th>
+                <th>@lang('lang.text_email')</th>
+                <th>@lang('lang.text_phone')</th>
+                <th>@lang('lang.text_address')</th>
                 <th>Option</th>
             </tr>
         </thead>
@@ -74,6 +58,7 @@
                     <td>{{ $etudiant->nom }}</td>
                     <td>{{ $etudiant->email }}</td>
                     <td>{{ $etudiant->phone }}</td>
+                    <td>{{ $etudiant->adresse}}</td>
                     <td>
                         <a href="{{ route('etudiants.edit', $etudiant->id) }}" class="btn btn-success btn-sm">Edit</a>
                         <form method="POST" action="{{ route('etudiants.destroy', $etudiant->id) }}" class="d-inline">
